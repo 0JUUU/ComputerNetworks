@@ -3,13 +3,6 @@
 #include <unistd.h>
 #include <signal.h>
 
-struct sigaction
-{
-	void (*sa_handler)(int);
-	sigset_t sa_mask;
-	int sa_flags;
-};
-
 void timeout(int sig)
 {
 	if (sig == SIGALRM)
