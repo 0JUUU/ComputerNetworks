@@ -3,13 +3,13 @@
 #include <string.h>
 #include <pthread.h>
 
-void* thread_main(void* arg);
+void* thread_main(void* arg);		// thread의 main 함수
 
 int main(int argc, char* argv[])
 {
 	pthread_t t_id;
 	int thread_param = 5;
-	void* thr_ret;
+	void* thr_ret;	// thread main 함수의 반환값을 저장할 변수
 
 	if (pthread_create(&t_id, NULL, thread_main, (void*)&thread_param) != 0)
 	{
@@ -29,8 +29,8 @@ int main(int argc, char* argv[])
 void* thread_main(void* arg)
 {
 	int i;
-	int cnt = *((int*)arg);
-	char* msg = (char*)malloc(sizeof(char) * 50);
+	int cnt = *((int*)arg);		// 형변환
+	char* msg = (char*)malloc(sizeof(char) * 50);	// 동적할당
 	strcpy(msg, "Hello, I'm thread~ \n");
 
 	for (i = 0; i < cnt; i++)
